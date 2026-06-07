@@ -82,8 +82,47 @@ Examples
 
 
 # Class 3
+1. 
+2. srcset is an attribute that is used in the source element alongside the picture element in order to display images of various sizes.
+A scenarion where it prevents problem for mobile users would be when there is an image that has a large size and resolution, a smaller size of that picture can be displayed on mobile devices while still maintaining clarity with a faster load time.
+3. rel="noopener" is important when using target="_blank" so as to stop the newly opened tab from interacting with the page that opened it. Without noopener when the original tab opens a new tab the new tab has control over the original but noopener blocks this control
+
 # Class 4
+## Theory
+1. Client-side validation only; when the user enters invalid email, browser checks the email format. Validation fails and error message appears. The for is not submitted but a client-side validdation can be bypassed, a user can disable javascript, modify requests using tools like postman, send data directly to the API. SO client side alone is not secure.
+Server-Side only; user enters email and click submit, browser sends request to server, server validates email, validation fails, server returns an error response the the UI displays the error but this takes a longer time for the user to know if there is an error. Server validation cannot be bypassed. The best approach is to use both togther so as to give users a good experience and ensure security of the application and database.
+
+2. The autocomplete attribute helps browsers understand what kind of in information a form field expects. This allows the browser to:
+Suggest previously entered values,
+Autofill saved information,
+Improve form completion speed,
+Reduce typing errors.
+Some autocomplete="values";
+- email - for email in login forms
+- name - collecting a person's full name
+- tel - phone number fields
+- country - county selection
+- street-address - shipping address
+
+## Product Thinking
+1. 
+2. native `<select>` should be used unless there is  a strong reason not to because;
+- it comes with accessibilty built in
+- it has better mobile exprience with optimized pickers
+- it does not require additional code thereby saves time for development 
+- it handle edge cases such as autofill,touch interactions and zoomed interface automatically
+Native select would be used when the options are not numerous more than 100 options, there is a single selection, no search is needed, no custom rendering needed. A scenario where custom dropdown would be used is when a user must chose from over 5000 cities. This can be efficiently achieved with a searchable combobox. Other cases involve when async loading, multi-select or multi-select ae required. 
+
+## Engineering Best Practice
+1. 
+
+
+
 # Class 5
+1. If two adjacent divs stacked have a margin-bottom: 20px and margin-bottom: 30px, then the space betwwn them would be 50px
+
+2. 
+3. The cascade in 
 # Class 6
 # Class 7
 # Class 8
