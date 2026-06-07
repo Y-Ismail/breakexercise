@@ -1,7 +1,7 @@
 # Class 1 The 2026 Web Ecosysytem
 
 ## Theory 
-1. When a web page loads, the browser builds the page's DOM tree. In this way, we can change all HTML properties on the page remove existing HTML elements and attributes, add new HTML elements and attributes, or chang all CSS styles on the page with scripting languages such as JavaScript.
+1. When a web page loads, the browser builds the page's DOM tree. In this way, we can change all HTML properties on the page remove existing HTML elements and attributes, add new HTML elements and attributes, or change all CSS styles on the page with scripting languages such as JavaScript.
 A DOM tree is a type of tree whose nodes represent the content of HTML and XML document
 
 ```
