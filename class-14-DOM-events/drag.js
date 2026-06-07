@@ -17,8 +17,8 @@ function createCardElement(card){
     div.innerHTML = `
     <h3>${card.title}</h3>
     <p>${card.description}</p>
-    <p><strong>Priority:</strong>${card.priority}</p>
-    <p><strong>Due:</strong>${card.dueDate}</p>
+    <p><strong>Priority:</strong> ${card.priority}</p>
+    <p><strong>Due:</strong> ${card.dueDate || "N/A"}</p>
 
     <div class="card-buttons">
         <button class="edit-btn">Edit</button>
@@ -56,7 +56,7 @@ function createCardElement(card){
         const dueDate = prompt("Due Date", card.dueDate);
 
         Object.assign(card, {
-            title, description,priority,dueDate
+            title,description,priority,dueDate
         });
 
         saveCards();
@@ -74,7 +74,7 @@ function renderBoard(){
     });
 
     cards.forEach(card => {
-        const column = document.querySelector(`[data-status="${card.status}"]`);
+        const column = document.querySelector(`[data-status = "${card.status}"]`);
 
         column.appendChild(createCardElement(card));
     });
@@ -87,12 +87,14 @@ form.addEventListener('submit', e => {
 
     const card = {
         id: crypto.randomUUID(),
-        title: document.getElementById("title.value"),
-        description: document.getElementById("description.value"),
-        priority: document.getElementById("priority.value"),
-        dueDate: document.getElementById("dueDate.value"),
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        priority: document.getElementById("priority").value,
+        dueDate: document.getElementById("dueDate").value,
         status: "todo"
     };
+
+   
 
     cards.push(card)
     saveCards()
@@ -105,5 +107,30 @@ form.addEventListener('submit', e => {
 document.querySelectorAll(".column").forEach(column => {
     column.addEventListener('dragover', e => {
         e.preventDefault()
+    });
+
+    column.addEventListener('dragenter', () => {
+        column.classList.add("drag-over");
+    });
+
+    column.addEventListener('dragleave', () => {
+        column.classList.remove('drag-over')
+    })
+    column.addEventListener("drop", () => {
+        const dragging = document.querySelector('.dragging');
+
+        const id = dragging.dataset.id;
+
+        const card = cards.find(c => c.id === id);
+
+        card.status = column.dataset.status;
+
+        saveCards();
+
+        column.classList.remove("drag-over")
+
+        renderBoard()
     })
 })
+
+renderBoard();
